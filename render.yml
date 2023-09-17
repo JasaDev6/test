@@ -1,0 +1,18 @@
+databases:
+  - name: mysite
+    databaseName: mysite
+    user: mysite
+
+services:
+  - type: web
+    name: mysite
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mysite
+          property: connectionString
+      - key: d6e7eefed551f9d89b8c92b3dcd29fca
+        sync: false
